@@ -1,5 +1,11 @@
+import { Application, Request, Response } from "express";
+import { User, UserService } from "./UserService";
+
+
 export class UserController {
-    constructor(app, userService) {
+    private userService: UserService;
+
+    constructor(app: Application, userService: UserService) {
         this.userService = userService;
 
         app.post('/users', this.createUser.bind(this));
@@ -7,7 +13,7 @@ export class UserController {
         app.get('/users/:id', this.getUserById.bind(this));
     }
 
-    createUser(req, res) {
+    createUser(req: Request, res: Response) {
         const { name, email } = req.body;
 
         const message = this.userService.createUser(name, email);
@@ -15,13 +21,13 @@ export class UserController {
         res.status(202).json({ message });
     }
 
-    getUsers(_req, res) {
+    getUsers(_req: Request, res: Response) {
         const users = this.userService.getUsers();
 
         res.status(200).json(users);
     }
 
-    getUserById(req, res) {
+    getUserById(req: Request, res: Response) {
         const user = this.userService.getUserById(req.params.id);
 
         if (!user) {
