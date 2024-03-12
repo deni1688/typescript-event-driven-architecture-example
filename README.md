@@ -1,1 +1,1 @@
-# Simple Example of a Event Driven Setup in NodeJS
+# Simple Example of a Event Driven Setup with Typescript
