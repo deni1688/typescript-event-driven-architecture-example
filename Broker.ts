@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { EventBroker } from './common';
+import { EventBroker, EventHandler } from './common';
 
 export class Broker implements EventBroker {
     private emitter: EventEmitter;
@@ -8,11 +8,11 @@ export class Broker implements EventBroker {
         this.emitter = emitter;
     }
 
-    publish(topic: string, message: unknown) {
+    publish<T>(topic: string, message: T) {
         this.emitter.emit(topic, message);
     }
 
-    subscribe(topic: string, listener: (message: unknown) => void) {
-        this.emitter.on(topic, listener);
+    subscribe<T>(topic: string, handler: EventHandler<T>) {
+        this.emitter.on(topic, handler);
     }
 }

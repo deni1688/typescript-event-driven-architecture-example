@@ -7,8 +7,8 @@ export class NotificationService {
     constructor(broker: EventBroker) {
         this.broker = broker;
 
-        this.broker.subscribe('user.created', this.sendWelcomeEmail as (message: unknown) => void);
-        this.broker.subscribe('user.exists', this.sendUserExistsEmail as (message: unknown) => void);
+        this.broker.subscribe('user.created', this.sendWelcomeEmail);
+        this.broker.subscribe('user.exists', this.sendUserExistsEmail);
     }
 
     sendWelcomeEmail(user: User) {

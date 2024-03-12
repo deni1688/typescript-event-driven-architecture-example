@@ -1,5 +1,5 @@
-import { randomUUID } from "crypto";
-import { EventBroker } from "./common";
+import { randomUUID } from 'crypto';
+import { EventBroker } from './common';
 
 export type UserId = string;
 export type User = {

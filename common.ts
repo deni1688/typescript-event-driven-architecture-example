@@ -1,5 +1,10 @@
+
+export interface EventHandler<T> {
+    (message: T): void;
+}
+
 export interface EventBroker {
-    subscribe(event: string, listener: (message: unknown) => void): void;
-    publish(event: string, message: unknown): void;
+    subscribe<T>(event: string, handler: EventHandler<T>): void;
+    publish<T>(event: string, message: T): void;
 }
 
