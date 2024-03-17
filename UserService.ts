@@ -27,7 +27,7 @@ export class UserServiceImpl implements UserService {
         new Promise(resolve => {
             setTimeout(() => {
                 if (Array.from(this.db.values()).some(user => user.email === email)) {
-                    this.broker.publish('user.exists', email);
+                    this.broker.publish('user.duplicateEmailSignupAttempted', email);
                     resolve(null);
                     return;
                 }
