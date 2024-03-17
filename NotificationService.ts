@@ -8,7 +8,7 @@ export class NotificationService {
         this.broker = broker;
 
         this.broker.subscribe('user.created', this.sendWelcomeEmail);
-        this.broker.subscribe('user.exists', this.sendUserExistsEmail);
+        this.broker.subscribe('user.duplicateEmailSignupAttempted', this.sendUserExistsEmail);
     }
 
     sendWelcomeEmail(user: User) {
