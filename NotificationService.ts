@@ -11,11 +11,11 @@ export class NotificationService {
         this.broker.subscribe('user.duplicateEmailSignupAttempted', this.sendUserExistsEmail);
     }
 
-    sendWelcomeEmail(user: User) {
+    private sendWelcomeEmail(user: User) {
         console.log(`Sending welcome email to ${user.email}`);
     }
 
-    sendUserExistsEmail(email: string) {
+    private sendUserExistsEmail(email: string) {
         console.log(`Sending user exists email to ${email}`);
     }
 }
